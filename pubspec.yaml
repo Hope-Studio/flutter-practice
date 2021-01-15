@@ -1,5 +1,5 @@
-name: flutter_pratice
-description: A new Flutter project.
+name: innenu
+description: innenu app.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -15,23 +15,111 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.0+1
+version: 0.0.1+2
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.9.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
+  flutter_localizations:
+    sdk: flutter
+
+  # https://github.com/material-components/material-components-flutter-adaptive/tree/develop/adaptive_breakpoints
+  adaptive_breakpoints: ^0.0.3
+
+  # https://github.com/brendan-duncan/archive
+  archive: ^2.0.13
+
+  # auto_size_text:
+
+  # https://github.com/Baseflow/flutter_cached_network_image
+  cached_network_image: ^2.5.0
+
+  # https://github.com/serenader2014/flutter_carousel_slider
+  carousel_slider: ^2.3.1
+
+  # Dart 常用工具类库 https://github.com/Sky24n/common_utils
+  common_utils: ^1.2.1
+
+  # connectivity:
+  # device_info:
+
+  # 网络库 https://github.com/flutterchina/dio
+  dio: ^3.0.10
+
+  # fluttertoast:
+
+  # https://github.com/SunnyApp/flutter_contact
+  flutter_contact: ^0.6.4
+
+  # flutter_secure_storage:
+
+  # SVG 支持: https://github.com/dnfield/flutter_svg
+  flutter_svg: ^0.19.1
+
+  # 路由框架 https://github.com/theyakka/fluro
+  fluro: ^1.7.8
+
+  # geolocator:
+  # location:
+
+  # https://github.com/dart-lang/logging
+  logging: ^0.11.4
+
+  # https://github.com/OpenFlutter/flutter_oktoast
+  oktoast: ^2.3.2
+
+  # package_info:
+
+  # https://github.com/dart-lang/path
+  path: ^1.7.0
+
+  # https://pub.flutter-io.cn/packages/path_provider
+  path_provider: ^1.6.27
+
+  # https://github.com/Baseflow/flutter-permission-handler
+  permission_handler: ^5.0.1
+
+  provider: ^4.3.2
+  shared_preferences: ^0.5.12
+
+  # Flutter shared_preferences plugin util https://github.com/Sky24n/sp_util
+  sp_util: ^1.0.1
+
+  # https://pub.flutter-io.cn/packages/url_launcher
+  url_launcher: ^5.7.0
+
+  # video_player:
+
+  # WebView 插件 https://github.com/flutter/plugins/tree/master/packages/webview_flutter
+  webview_flutter: ^1.0.7
+
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.0
+  # cupertino_icons:
+  # flutter_cupertino_localizations:
 
 dev_dependencies:
+  # https://pub.flutter-io.cn/packages/build_runner
+  build_runner: ^1.10.13
+
   flutter_test:
     sdk: flutter
-  pedantic: ^1.9.0
+
+  # https://pub.flutter-io.cn/packages/integration_test
+  integration_test: ^1.0.1
+
+  # https://pub.flutter-io.cn/packages/json_serializable
+  json_serializable: ^3.5.1
+
+  # https://pub.flutter-io.cn/packages/pedantic
+  pedantic: ^1.9.2
+
+  # https://pub.flutter-io.cn/packages/test
+  test: ^1.15.7
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -53,6 +141,9 @@ flutter:
 
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
+
+  assets:
+    - assets/components/doc/
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
