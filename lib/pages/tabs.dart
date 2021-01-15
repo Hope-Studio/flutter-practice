@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'tabs/category.dart';
+import 'tabs/function.dart';
 import 'tabs/home.dart';
 import 'tabs/setting.dart';
 
@@ -16,6 +18,7 @@ class _TabsState extends State<Tabs> {
   final List<Widget> _pageList = <Widget>[
     const HomePage(),
     const CategoryPage(),
+    const FunctionPage(),
     const SettingPage(),
   ];
 
@@ -32,18 +35,32 @@ class _TabsState extends State<Tabs> {
               _currentIndex = index;
             });
           },
+          unselectedItemColor: Colors.blue,
+          fixedColor: Colors.blue,
           // ignore: prefer_const_literals_to_create_immutables
           items: [
             const BottomNavigationBarItem(
-              icon: Icon(Icons.home),
+              icon: Icon(
+                Icons.home,
+              ),
               label: "首页",
             ),
             const BottomNavigationBarItem(
-              icon: Icon(Icons.category),
+              icon: Icon(
+                Icons.category,
+              ),
               label: "分类",
             ),
             const BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
+              icon: Icon(
+                Icons.functions,
+              ),
+              label: "功能",
+            ),
+            const BottomNavigationBarItem(
+              icon: Icon(
+                Icons.settings,
+              ),
               label: "设置",
             ),
           ],

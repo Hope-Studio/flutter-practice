@@ -19,8 +19,7 @@ class _HomePageState extends State<HomePage> {
               Navigator.push<Object>(
                   context,
                   MaterialPageRoute(
-                    builder: (BuildContext context) => const SearchPage(),
-                  ));
+                      builder: (BuildContext context) => const SearchPage()));
             },
             child: const Text("跳转到搜索界面"),
           )
