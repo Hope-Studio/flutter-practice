@@ -1,34 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 
-import 'package:innenu/common/color.dart';
 import 'package:innenu/widgets/components/components.dart';
 
 final _logger = Logger('page');
 
-class MyPage extends StatelessWidget {
-  const MyPage(
-      {@required List<Widget> children,
-      @required this.title,
-      this.grey = false})
+class MyComponents extends StatelessWidget {
+  const MyComponents({@required List<Widget> children})
       : pageWidgets = children;
 
-  /// 从 JSON 生成 MyPage
-  MyPage.fromJson(Map<String, dynamic> pageWidgets)
-      : title = pageWidgets['hidden'] as bool == true
-            ? ''
-            : pageWidgets['title'] as String ?? 'in东师',
-        grey = pageWidgets['grey'] as bool ?? false,
-        pageWidgets = List<Widget>.generate(
+  /// 从 JSON 生成
+  MyComponents.fromJson(Map<String, dynamic> pageWidgets)
+      : pageWidgets = List<Widget>.generate(
             (pageWidgets['content'] as List<dynamic>).length,
             (index) => _generateWidget(
                 pageWidgets['content'][index] as Map<String, dynamic>));
-
-  /// 页面标题
-  final String title;
-
-  /// 页面背景是否为灰色
-  final bool grey;
 
   /// 页面组件
   final List<Widget> pageWidgets;
@@ -77,16 +63,7 @@ class MyPage extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        appBar: title.isNotEmpty
-            ? AppBar(
-                title: Text(title),
-              )
-            : null,
-        body: Container(
-            decoration: BoxDecoration(color: commonColor.bgColor(grey: grey)),
-            child: ListView(
-              children: pageWidgets,
-            )),
+  Widget build(BuildContext context) => Column(
+        children: pageWidgets,
       );
 }

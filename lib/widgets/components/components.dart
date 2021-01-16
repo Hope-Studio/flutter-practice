@@ -1,5 +1,6 @@
 export 'card/card.dart';
 export 'carousel/carousel.dart';
+export 'components/components.dart';
 export 'doc/doc.dart';
 export 'footer/footer.dart';
 export 'grid/grid.dart';

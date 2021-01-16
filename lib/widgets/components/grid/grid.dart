@@ -13,7 +13,7 @@ part 'grid.g.dart';
 /// 列表配置
 @JsonSerializable()
 class GridComponentConfig {
-  GridComponentConfig({
+  const GridComponentConfig({
     this.text = '',
     this.icon = '',
     this.path,
@@ -56,10 +56,18 @@ class GridComponentConfig {
 
 @JsonSerializable()
 class GridComponent extends StatelessWidget {
-  const GridComponent(this.content, {this.header, this.footer = ''});
+  const GridComponent(this.content, {this.header, this.footer = ''})
+      : assert(content != null, 'Grid must has valid content'),
+        assert(content is List, 'Grid content must be a list');
 
-  factory GridComponent.fromJson(Map<String, dynamic> json) =>
-      _$GridComponentFromJson(json);
+  factory GridComponent.fromJson(Map<String, dynamic> json) {
+    assert(json['content'] != null, 'Grid must has valid content');
+    assert(json['content'] is List, 'Grid content must be a list');
+    assert((json['content'] as List).every((dynamic child) => child is Map),
+        "Grid content must be 'List<Map<String, String>>'");
+
+    return _$GridComponentFromJson(json);
+  }
 
   /// 段落内容
   @JsonKey(fromJson: _getContentFromJson)
@@ -101,7 +109,7 @@ class GridComponent extends StatelessWidget {
             child: Text(
               config.text,
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.button,
+              style: Theme.of(context).textTheme.caption,
             ),
           ),
         ],

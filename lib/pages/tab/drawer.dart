@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:innenu/router/router.dart';
+import 'package:fluro/fluro.dart';
 
 /// 抽屉组件
 Drawer drawerWidget(BuildContext context) => Drawer(
@@ -34,14 +36,16 @@ Drawer drawerWidget(BuildContext context) => Drawer(
             leading: const Icon(Icons.settings),
             title: const Text('设置'),
             onTap: () {
-              Navigator.pushNamed(context, '/setting');
+              Routes.router.navigateTo(context, '/setting',
+                  transition: TransitionType.inFromRight);
             },
           ),
           ListTile(
             leading: const Icon(Icons.info),
             title: const Text('关于'),
             onTap: () {
-              Navigator.pushNamed(context, '/about');
+              Routes.router.navigateTo(context, '/about',
+                  transition: TransitionType.inFromRight);
             },
           ),
         ],

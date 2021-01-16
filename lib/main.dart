@@ -4,10 +4,11 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'package:sp_util/sp_util.dart';
 
-import 'package:innenu/pages/tab/tab.dart';
-import 'package:innenu/utils/info.dart';
-import 'package:innenu/router/not_found_page.dart';
-import 'package:innenu/router/router.dart';
+import 'common/color.dart' show darkColorScheme, lightColorScheme;
+import 'pages/tab/tab.dart';
+import 'router/not_found_page.dart';
+import 'router/router.dart';
+import 'utils/info.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -60,13 +61,10 @@ class MyApp extends StatelessWidget {
         ),
 
         /// 主题设置
-        theme: ThemeData(
-          primaryColor: Colors.greenAccent[400],
-        ),
+        theme: ThemeData.from(colorScheme: lightColorScheme),
 
         /// 暗黑主题设置
-        darkTheme: ThemeData(
-            primaryColor: Colors.greenAccent[400], brightness: Brightness.dark),
+        darkTheme: ThemeData.from(colorScheme: darkColorScheme),
 
         /// 主题模式
         themeMode: ThemeMode.system,

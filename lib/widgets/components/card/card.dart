@@ -8,15 +8,23 @@ part 'card.g.dart';
 @JsonSerializable()
 class CardComponent extends StatelessWidget {
   const CardComponent(
-      {this.title,
+      {@required this.title,
+      @required this.src,
+      @required this.url,
       this.desc = '',
-      this.src,
-      this.url,
       this.name = '',
-      this.logo = ''});
+      this.logo = ''})
+      : assert(title != null, 'Card must has a valid title'),
+        assert(src != null, 'Card must has a valid cover image'),
+        assert(url != null, 'Card must has a valid link');
 
-  factory CardComponent.fromJson(Map<String, dynamic> json) =>
-      _$CardComponentFromJson(json);
+  factory CardComponent.fromJson(Map<String, dynamic> json) {
+    assert(json['title'] != null, 'Card must has a valid title');
+    assert(json['src'] != null, 'Card must has a valid cover image');
+    assert(json['url'] != null, 'Card must has a valid link');
+
+    return _$CardComponentFromJson(json);
+  }
 
   /// 卡片标题
   final String title;
