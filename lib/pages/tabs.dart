@@ -7,6 +7,7 @@ import 'tabs/setting.dart';
 
 class Tabs extends StatefulWidget {
   const Tabs({Key key}) : super(key: key);
+  static String routeName = "/tabs";
 
   @override
   _TabsState createState() => _TabsState();
@@ -35,7 +36,7 @@ class _TabsState extends State<Tabs> {
               _currentIndex = index;
             });
           },
-          unselectedItemColor: Colors.blue,
+          unselectedItemColor: Colors.grey,
           fixedColor: Colors.blue,
           // ignore: prefer_const_literals_to_create_immutables
           items: [

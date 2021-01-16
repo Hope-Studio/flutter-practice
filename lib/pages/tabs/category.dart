@@ -16,16 +16,19 @@ class _CategoryPageState extends State<CategoryPage> {
   @override
   Widget build(BuildContext context) {
     // ignore: prefer_expression_function_bodies
-    RaisedButton _aRaisedButton(
-            Color color, IconData icon, String text, Widget page) =>
-        RaisedButton(
+    FlatButton _aFlatButton(
+            Color color, IconData icon, String text, Widget pageName) =>
+        FlatButton(
           // ignore: unnecessary_parenthesis
           shape: (const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(10)))),
           color: Colors.white,
           onPressed: () {
-            Navigator.push<Widget>(context,
-                MaterialPageRoute(builder: (BuildContext context) => page));
+            Navigator.push<Object>(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => pageName,
+                ));
           },
           child: Column(
             children: [
@@ -49,10 +52,10 @@ class _CategoryPageState extends State<CategoryPage> {
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       children: [
-        _aRaisedButton(Colors.black, Icons.menu, "文本", const PageOne()),
-        _aRaisedButton(Colors.black, Icons.menu, "文本", const PageTwo()),
-        _aRaisedButton(Colors.black, Icons.menu, "文本", const PageThree()),
-        _aRaisedButton(Colors.black, Icons.menu, "文本", const PageFour())
+        _aFlatButton(Colors.black, Icons.menu, "文本", const PageOne()),
+        _aFlatButton(Colors.black, Icons.menu, "文本", const PageTwo()),
+        _aFlatButton(Colors.black, Icons.menu, "文本", const PageThree()),
+        _aFlatButton(Colors.black, Icons.menu, "文本", const PageFour())
       ],
     );
 
