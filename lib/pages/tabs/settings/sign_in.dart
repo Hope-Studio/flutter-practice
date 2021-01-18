@@ -11,7 +11,11 @@ class SignInPage extends StatefulWidget {
 class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(title: const Text("sign in")),
+        appBar: AppBar(
+            title: const Text(
+          "sign in",
+          style: TextStyle(color: Color(0xff888888)),
+        )),
         body: const Body(),
       );
 }

@@ -12,9 +12,7 @@ class SettingPage extends StatefulWidget {
 class _SettingPageState extends State<SettingPage> {
   @override
   Widget build(BuildContext context) {
-    OutlineButton _aOutlineButton<Object>(String text, Widget pageName) =>
-        OutlineButton(
-          borderSide: const BorderSide(color: Colors.blue),
+    FlatButton _aFlatButton<Object>(String text, Widget pageName) => FlatButton(
           // ignore: unnecessary_parenthesis
           shape: (const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(10)))),
@@ -34,9 +32,9 @@ class _SettingPageState extends State<SettingPage> {
 
     return ListView(
       children: [
-        _aOutlineButton<Object>("text", const SignInPage()),
-        _aOutlineButton<Object>("text", const SignInPage()),
-        _aOutlineButton<Object>("text", const SignInPage()),
+        _aFlatButton<Object>("text", const SignInPage()),
+        _aFlatButton<Object>("text", const SignInPage()),
+        _aFlatButton<Object>("text", const SignInPage()),
       ],
     );
   }

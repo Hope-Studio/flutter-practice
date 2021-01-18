@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:atest/size_config.dart';
 import 'components/body.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -10,5 +11,8 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
-  Widget build(BuildContext context) => const Scaffold(body: Body());
+  Widget build(BuildContext context) {
+    SizeConfig().init(context);
+    return const Scaffold(body: Body());
+  }
 }

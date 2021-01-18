@@ -26,8 +26,9 @@ class _TabsState extends State<Tabs> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: const Text("title"),
-        ),
+            title: const Text(
+          "title",
+        )),
         body: _pageList[_currentIndex],
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex,
