@@ -1,3 +1,5 @@
+import 'package:atest/components/form_error.dart';
+import 'package:atest/constants.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatefulWidget {
@@ -48,7 +50,7 @@ class SignForm extends StatefulWidget {
 
 class _SignFormState extends State<SignForm> {
   final _formKey = GlobalKey<FormState>();
-  // final List<String> errors = [];
+  final List<String> errors = [];
   String studentid, password;
 
   void submitForm() {
@@ -66,16 +68,27 @@ class _SignFormState extends State<SignForm> {
             const SizedBox(height: 20),
             buidPasswordField(),
             const SizedBox(height: 20),
+            FormError(errors: errors),
+            const SizedBox(height: 20),
             flatButton()
           ],
         ),
       );
 
   TextFormField buidIDField() => TextFormField(
+      onChanged: (value) {
+        if (value.isNotEmpty && errors.contains(kStudentIDNullError)) {
+          setState(() {
+            errors.remove(kStudentIDNullError);
+          });
+        }
+      },
       validator: (value) {
         //输入字符校验
-        if (value.isEmpty) {
-          return "请输入文字";
+        if (value.isEmpty && !errors.contains(kStudentIDNullError)) {
+          setState(() {
+            errors.add(kStudentIDNullError);
+          });
         }
         return null;
       },
@@ -95,10 +108,27 @@ class _SignFormState extends State<SignForm> {
 
   TextFormField buidPasswordField() => TextFormField(
         obscureText: true,
+        onChanged: (value) {
+          if (value.isNotEmpty && errors.contains(kPassNullError)) {
+            setState(() {
+              errors.remove(kPassNullError);
+            });
+          } else if (value.length >= 8 && errors.contains(kShortPassError)) {
+            setState(() {
+              errors.remove(kShortPassError);
+            });
+          }
+        },
         validator: (value) {
           //输入字符校验
-          if (value.isEmpty) {
-            return "请输入文字";
+          if (value.isEmpty && !errors.contains(kPassNullError)) {
+            setState(() {
+              errors.add(kPassNullError);
+            });
+          } else if (value.length < 8 && !errors.contains(kShortPassError)) {
+            setState(() {
+              errors.add(kShortPassError);
+            });
           }
           return null;
         },
@@ -121,7 +151,13 @@ class _SignFormState extends State<SignForm> {
         // ignore: unnecessary_parenthesis
         shape: (const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(10)))),
-        onPressed: submitForm,
+        // onPressed: submitForm,
+        onPressed: () {
+          if (_formKey.currentState.validate()) {
+            _formKey.currentState.save();
+          }
+        },
+
         child: const Text(
           "sign in",
           style: TextStyle(color: Colors.white),
