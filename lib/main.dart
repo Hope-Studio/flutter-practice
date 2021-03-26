@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'tabs.dart';
+import 'tabs_demo1.dart';
 
 void main() => runApp(MyApp());
 
