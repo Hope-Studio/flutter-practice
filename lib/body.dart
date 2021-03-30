@@ -1,3 +1,4 @@
+import 'package:forecast_joan/constants.dart';
 import 'package:forecast_joan/size_config.dart';
 import 'package:flutter/material.dart';
 
@@ -11,13 +12,15 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) => SafeArea(
-          child: Column(
+          child: ListView(
         children: [
           today,
           SizedBox(height: getProportionateScreenHight(20)),
           simpleForecast,
           SizedBox(height: getProportionateScreenHight(20)),
           eachHour,
+          SizedBox(height: getProportionateScreenHight(20)),
+          Expanded(child: indexs),
         ],
       ));
 }
@@ -40,7 +43,7 @@ Widget today = SizedBox(
                   Radius.circular(getProportionateScreenWidth(10))),
             ),
             child: Padding(
-                padding: EdgeInsets.all(5),
+                padding: EdgeInsets.all(getProportionateScreenWidth(5)),
                 child: Column(children: [const Text("25"), const Text("优")]))),
         const Spacer(),
         TextButton(
@@ -62,10 +65,9 @@ Widget simpleForecast = Container(
   color: Colors.white,
   child: Row(children: [
     Expanded(
-        child: Padding(
-      padding: EdgeInsets.all(getProportionateScreenHight(10)),
-      child: Column(
-        children: [
+      child: Padding(
+        padding: EdgeInsets.all(getProportionateScreenHight(10)),
+        child: Column(children: [
           Row(
             children: [
               const Text("今天"),
@@ -81,9 +83,9 @@ Widget simpleForecast = Container(
               const Icon(Icons.ac_unit),
             ],
           ),
-        ],
+        ]),
       ),
-    )),
+    ),
     Expanded(
       child: Padding(
         padding: EdgeInsets.all(getProportionateScreenHight(10)),
@@ -111,27 +113,62 @@ Widget simpleForecast = Container(
   ]),
 );
 
-Widget eachHour = Container(
-  color: Colors.white,
+Widget eachHour = SizedBox(
   height: getProportionateScreenHight(100),
-  child: ListView.builder(
-    scrollDirection: Axis.horizontal,
-    itemCount: 16,
-    itemBuilder: (BuildContext context, int index) {
-      return Container(
-        color: Colors.white,
-        width: getProportionateScreenWidth(100),
-        child: Padding(
+  child: Container(
+    color: Colors.white,
+    child: ListView.builder(
+      scrollDirection: Axis.horizontal, //水平滚动
+      itemCount: 16,
+      itemBuilder: (BuildContext context, int index) {
+        return Padding(
           padding: EdgeInsets.all(getProportionateScreenHight(10)),
           child: Column(children: [
-            Text("$index"),
+            Text("$index", style: TextStyle(color: subColor, fontSize: 12)),
             SizedBox(height: getProportionateScreenHight(10)),
             const Icon(Icons.ac_unit),
             SizedBox(height: getProportionateScreenHight(10)),
             Text("$index"),
           ]),
-        ),
-      );
-    },
+        );
+      },
+    ),
+  ),
+);
+
+Widget indexs = Container(
+  color: Colors.white,
+  child: Expanded(
+    child: GridView.builder(
+      physics: new NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 4,
+          crossAxisSpacing: 0,
+          mainAxisSpacing: 0,
+          childAspectRatio: 1),
+      itemCount: 16,
+      itemBuilder: (BuildContext context, int index) {
+        return Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border.all(
+              color: subColor,
+              width: getProportionateScreenWidth(0.5),
+            ),
+          ),
+          child: Padding(
+            padding: EdgeInsets.all(getProportionateScreenHight(21)),
+            child: Column(children: [
+              const Icon(Icons.ac_unit),
+              SizedBox(height: getProportionateScreenHight(10)),
+              Text("$index"),
+              SizedBox(height: getProportionateScreenHight(5)),
+              Text("$index", style: TextStyle(color: subColor, fontSize: 12)),
+            ]),
+          ),
+        );
+      },
+    ),
   ),
 );
